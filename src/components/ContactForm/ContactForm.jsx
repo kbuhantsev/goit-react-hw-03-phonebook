@@ -9,6 +9,7 @@ import {
   FieldStyled,
   ButtonStyled,
 } from './ContactForm.styled';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 const phoneRegExp =
   /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
@@ -55,7 +56,13 @@ function ContactForm({ onSubmit }) {
           <ErrorMessageStyled name="number" component="div" />
         </label>
 
-        <ButtonStyled type="submit">Add contact</ButtonStyled>
+        <ButtonStyled
+          type="submit"
+          variant="outlined"
+          startIcon={<AddCircleOutlineIcon />}
+        >
+          Add contact
+        </ButtonStyled>
       </FormStyled>
     </Formik>
   );
