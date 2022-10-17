@@ -12,7 +12,7 @@ import { StyledTableCell, StyledTableRow } from './ContactsTable.styled';
 
 function ContactsTable({ contacts, onDelete }) {
   return (
-    <TableContainer component={Paper} sx={{ width: 500 }}>
+    <TableContainer component={Paper} sx={{ width: 600 }}>
       <Table aria-label="contacts table">
         <TableHead>
           <TableRow>

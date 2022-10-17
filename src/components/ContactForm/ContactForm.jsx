@@ -4,7 +4,7 @@ import { customAlphabet } from 'nanoid';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { ButtonStyled, FormStyled } from './ContactForm.styled';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import AddIcon from '@mui/icons-material/Add';
 import { TextField } from '@mui/material';
 
 const phoneRegExp =
@@ -66,11 +66,7 @@ function ContactForm({ onSubmit }) {
           error={formik.touched.number && Boolean(formik.errors.number)}
           helperText={formik.touched.number && formik.errors.number}
         />
-        <ButtonStyled
-          type="submit"
-          variant="outlined"
-          startIcon={<AddCircleOutlineIcon />}
-        >
+        <ButtonStyled type="submit" variant="outlined" startIcon={<AddIcon />}>
           Add contact
         </ButtonStyled>
       </FormStyled>

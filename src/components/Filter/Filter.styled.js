@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import TextField from '@mui/material/TextField';
 
 export const LabelStyled = styled.label`
   display: flex;
   flex-direction: column;
 `;
 
-export const InputStyled = styled.input`
-  width: 200px;
+export const TextFieldStyled = styled(TextField)`
+  width: 300px;
+  margin-bottom: '10px';
 `;
