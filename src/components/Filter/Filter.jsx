@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { LabelStyled, InputStyled } from './Filter.styled';
 import TextField from '@mui/material/TextField';
 
 function Filter({ onInput }) {
@@ -10,16 +9,12 @@ function Filter({ onInput }) {
   };
 
   return (
-    // <LabelStyled>
-    //   Find contacts by name
-    //   <InputStyled name="search" onChange={handleInput}></InputStyled>
-    // </LabelStyled>
     <TextField
-      id="standard-basic"
+      id="search"
       name="search"
       label="Find contacts by name"
       variant="standard"
-      margin="normal"
+      sx={{ marginBottom: '10px' }}
       onChange={handleInput}
     />
   );

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Filter from './Filter/Filter';
 import ContactForm from './ContactForm';
-// import ContactList from './ContactsList';
 import debounce from 'lodash.debounce';
 import * as storage from '../utils/storage';
+import Box from './Box';
 
 //Material
-import TableData from './TableData';
+import ContactsTable from './ContactsTable';
 
 const INITIAL_STATE = {
   contacts: [
@@ -74,13 +74,17 @@ export class App extends Component {
     }
     return (
       <div style={{ marginLeft: '30px' }}>
-        <h1>Phonebook</h1>
+        <Box as={'h1'} mb={'10px'}>
+          Ponebook
+        </Box>
         <ContactForm onSubmit={this.onSubmit} />
 
-        <h2>Contacts</h2>
+        <Box as={'h2'} mb={'0px'}>
+          Contacts
+        </Box>
         <Filter onInput={this.onFilterChangeDebounced} />
 
-        <TableData
+        <ContactsTable
           contacts={filteredContacts}
           onDelete={this.onDeleteContact}
         />

@@ -1,15 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { customAlphabet } from 'nanoid';
-import { Formik } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import {
-  FormStyled,
-  ErrorMessageStyled,
-  FieldStyled,
-  ButtonStyled,
-} from './ContactForm.styled';
+import { ButtonStyled, FormStyled } from './ContactForm.styled';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { TextField } from '@mui/material';
 
 const phoneRegExp =
   /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
@@ -37,25 +33,39 @@ function ContactForm({ onSubmit }) {
     }
   };
 
+  const formik = useFormik({
+    initialValues: { name: '', number: '' },
+    validationSchema: schema,
+    onSubmit: handleSubmit,
+  });
+
   return (
-    <Formik
-      initialValues={{ name: '', number: '' }}
-      validationSchema={schema}
-      onSubmit={handleSubmit}
-    >
-      <FormStyled name="contact-form">
-        <label htmlFor="name">
-          Name:
-          <FieldStyled type="text" name="name" />
-          <ErrorMessageStyled name="name" component="div" />
-        </label>
-
-        <label htmlFor="number">
-          Number:
-          <FieldStyled type="tel" name="number" />
-          <ErrorMessageStyled name="number" component="div" />
-        </label>
-
+    <>
+      <FormStyled onSubmit={formik.handleSubmit}>
+        <TextField
+          name="name"
+          id="name"
+          label="Name"
+          variant="outlined"
+          required
+          size="small"
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          error={formik.touched.name && Boolean(formik.errors.name)}
+          helperText={formik.touched.name && formik.errors.name}
+        />
+        <TextField
+          name="number"
+          id="number"
+          label="Number"
+          variant="outlined"
+          required
+          size="small"
+          value={formik.values.number}
+          onChange={formik.handleChange}
+          error={formik.touched.number && Boolean(formik.errors.number)}
+          helperText={formik.touched.number && formik.errors.number}
+        />
         <ButtonStyled
           type="submit"
           variant="outlined"
@@ -64,7 +74,7 @@ function ContactForm({ onSubmit }) {
           Add contact
         </ButtonStyled>
       </FormStyled>
-    </Formik>
+    </>
   );
 }
 
