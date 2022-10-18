@@ -75,7 +75,7 @@ export class App extends Component {
     return (
       <div style={{ marginLeft: '30px' }}>
         <Box as={'h1'} mb={'10px'}>
-          Ponebook
+          Phonebook
         </Box>
         <ContactForm onSubmit={this.onSubmit} />
 
